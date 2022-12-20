@@ -1,0 +1,68 @@
+{% extends 'partials/base.html' %}
+{% load crispy_forms_tags %}
+
+{% load static %}
+
+{% block title %}Form Elements{% endblock title %}
+
+{% block content %}
+<div class="main-content">
+    <div class="page-content">
+        <!-- start page title -->
+        <div class="page-title-box">
+            <div class="container-fluid">
+                <div class="row align-items-center">
+                    <div class="col-sm-6">
+                        <div class="page-title">
+                            <h4>Register New Boda Crime</h4>
+                            <ol class="breadcrumb m-0">
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Home</a></li>
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Crimes</a></li>
+                            </ol>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <p></p>
+        <!-- end page title -->
+        <div class="container-fluid">
+            <div class="page-content-wrapper">
+                <p></p>
+                <form method="POST" action="{% url 'list_view' %}" enctype="multipart/form-data">
+                    {% csrf_token %}
+                   
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="header-title">Fill in the required Fields</h4>
+
+                            <label for="name" class="col-sm-6 col-form-label">Full
+                                Name</label>
+                            <div class="col-sm-3">
+                                <input class="form-control" type="text" name="name" value="{{mymember.name}}"
+                                    placeholder="" id="example-text-input">
+                            </div>
+
+                            <label for="crime_type" class="col-sm-6 col-form-label">Road Traffic
+                                crime</label>
+                            <div class="col-sm-3">
+                                <input class="form-control" type="text" name="crime_type"
+                                    value="{{mymember.crime_type}}" placeholder="" id="example-text-input">
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-success " value="Submit" name="Submit">Save</button>
+                    <i class="form-group__bar"></i>
+
+                </form>
+                <!-- end edith form row -->
+
+                <!-- end row -->
+            </div>
+        </div> <!-- container-fluid -->
+    </div>
+    <!-- End Page-content -->
+    {% endblock content %}

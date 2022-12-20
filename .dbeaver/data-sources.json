@@ -1,0 +1,36 @@
+{
+	"folders": {},
+	"connections": {
+		"mysql8-18529394418-67e2eabb01310219": {
+			"provider": "mysql",
+			"driver": "mysql8",
+			"name": "cit2",
+			"save-password": true,
+			"configuration": {
+				"host": "localhost",
+				"port": "3306",
+				"database": "cit2",
+				"url": "jdbc:mysql://localhost:3306/cit2",
+				"configurationType": "MANUAL",
+				"type": "dev",
+				"properties": {
+					"connectTimeout": "20000",
+					"rewriteBatchedStatements": "true",
+					"enabledTLSProtocols": "TLSv1,TLSv1.1,TLSv1.2"
+				},
+				"auth-model": "native"
+			}
+		}
+	},
+	"connection-types": {
+		"dev": {
+			"name": "Development",
+			"color": "255,255,255",
+			"description": "Regular development database",
+			"auto-commit": true,
+			"confirm-execute": false,
+			"confirm-data-change": false,
+			"auto-close-transactions": false
+		}
+	}
+}

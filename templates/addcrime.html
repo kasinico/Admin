@@ -1,0 +1,141 @@
+{% extends 'partials/base.html' %}
+{% load crispy_forms_tags %}
+
+{% load static %}
+
+{% block title %}Form Elements{% endblock title %}
+
+{% block content %}
+<div class="main-content">
+    <div class="page-content">
+        <!-- start page title -->
+        <div class="page-title-box">
+            <div class="container-fluid">
+                <div class="row align-items-center">
+                    <div class="col-sm-6">
+                        <div class="page-title">
+                            <h4>Register New Boda Crime</h4>
+                            <ol class="breadcrumb m-0">
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Home</a></li>
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Crimes</a></li>
+                            </ol>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <p></p>
+        <!-- end page title -->
+        <div class="container-fluid">
+            <div class="page-content-wrapper">
+                <p></p>
+                <form method="POST" class="CrimeForm" enctype="multipart/form-data">
+                    {% csrf_token %}
+
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="header-title">Fill in the required Fields</h4>
+
+                                    <div class="row mb-3">
+                                        <label for="name" class="col-sm-2 col-form-label">Full
+                                            Name</label>
+                                        <div class="col-sm-3">
+                                            <input class="form-control" type="text" name="name" placeholder="My name"
+                                                id="example-text-input">
+                                        </div>
+
+                                        <label for="crime_type" class="col-sm-2 col-form-label">Road Traffic
+                                            crime</label>
+                                        <div class="col-sm-5">
+                                            <input class="form-control" type="text" name="crime_type"
+                                                placeholder="Overspeeding/ no reflecter" id="example-text-input">
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <label for="license" class="col-sm-2 col-form-label">vehichle Number
+                                            Plate</label>
+                                        <div class="col-sm-3">
+                                            <input class="form-control" type="text" name="license"
+                                                placeholder="UBC 342L" id="example-text-input">
+                                        </div>
+
+                                        <label for="occupation" class="col-sm-2 col-form-label">occupation /
+                                            Comapny</label>
+                                        <div class="col-sm-5">
+                                            <input class="form-control" type="text" name="occupation"
+                                                placeholder="Owner" id="example-text-input">
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row mb-3">
+                                        <label for="stage" class="col-sm-2 col-form-label">Boda
+                                            Stage</label>
+                                        <div class="col-sm-3">
+                                            <input class="form-control" type="text" name="stage" placeholder="Wandegeya"
+                                                id="example-text-input">
+                                        </div>
+                                        <label for="telephone" class="col-sm-2 col-form-label">Telephone</label>
+                                        <div class="col-sm-5">
+                                            <input class="form-control" type="tel" name="telephone"
+                                                placeholder="256 5555555" id="example-tel-input">
+                                        </div>
+
+                                    </div>
+
+
+
+
+
+                                    <div class="row mb-3">
+                                        <label for="datetime" class="col-sm-2 col-form-label">Date and time</label>
+                                        <div class="col-sm-6">
+                                            <input class="form-control" name="datetime" type="datetime-local" value=""
+                                                id="example-datetime-local-input">
+                                        </div>
+                                    </div>
+
+
+
+
+
+                                    <div class="row mb-3">
+                                        <label class="col-sm-2 col-form-label">Custody Destination</label>
+                                        <div class="col-sm-6">
+                                            <select class="form-select" name="custody"
+                                                aria-label="Default select example">
+                                                <option selected="">Jinja Rd Police</option>
+                                                <option value="1">Rubaga Div Police</option>
+                                                <option value="2">Kiira Rd Police</option>
+                                                <option value="3">Wandegeya div Police</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <button type="submit" class="btn btn-success " value="Submit"
+                                        name="Submit">Save</button>
+                                    <i class="form-group__bar"></i>
+
+                                </div>
+                            </div>
+
+                        </div> <!-- end col -->
+
+                    </div>
+                </form>
+                <!-- end row -->
+                <p></p>
+
+                <!-- end row -->
+
+                <!-- end row -->
+            </div>
+        </div> <!-- container-fluid -->
+    </div>
+    <!-- End Page-content -->
+    {% endblock content %}

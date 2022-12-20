@@ -1,0 +1,159 @@
+{% load static %}
+{% block sidebar %}
+<!-- ========== Left Sidebar Start ========== -->
+<div class="vertical-menu">
+    <div data-simplebar class="h-100">
+        <div class="user-sidebar text-center">
+            <div class="dropdown">
+                <div class="user-img">
+                    <img src="{% static 'images/users/avatar-7.jpg' %}" alt="" class="rounded-circle">
+                    <span class="avatar-online bg-success"></span>
+                </div>
+                <div class="user-info">
+                    <h5 class="mt-3 font-size-16 text-white">{{ user.username }}</h5>
+                    <span class="font-size-13 text-white-50">Police Officer</span>
+                </div>
+            </div>
+        </div>
+        <!--- Sidemenu -->
+        <div id="sidebar-menu">
+            <!-- Left Menu Start -->
+            <ul class="metismenu list-unstyled" id="side-menu">
+                <li class="menu-title" key="t-menu">Menu</li>
+                <li>
+                    <a href="{% url 'index' %}" class="waves-effect">
+                        <i class="dripicons-home"></i><span class="badge rounded-pill bg-info float-end">3</span>
+                        <span key="t-dashboard">Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'addcrime' %}" class=" waves-effect">
+                        <i class="dripicons-calendar"></i>
+                        <span key="t-calendar">Add New Crime</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'list_view' %}" class=" waves-effect">
+                        <i class="dripicons-calendar"></i>
+                        <span key="t-calendar">View Crime</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'chat' %}" class=" waves-effect">
+                        <i class="dripicons-message"></i>
+                        <span key="t-chat">Chat</span>
+                    </a>
+                </li>
+                <!----=============================  ecomm ====================================
+                    <li>
+                        <a href="javascript: void(0);" class="has-arrow waves-effect">
+                            <i class="dripicons-cart"></i>
+                            <span key="t-ecommerce">Ecommerce</span>
+                        </a>
+                        <ul class="sub-menu" aria-expanded="false">
+                            <li><a href="{% url 'ecommerce_product' %} " key="t-products">Products</a></li>
+                            <li><a href="{% url 'ecommerce_product_detail' %} " key="t-product-detail">Product Detail</a></li>
+                            <li><a href="{% url 'ecommerce_orders' %} " key="t-orders">Orders</a></li>
+                            <li><a href="{% url 'ecommerce_customers' %} " key="t-customers">Customers</a></li>
+                            <li><a href="{% url 'ecommerce_cart' %} " key="t-cart">Cart</a></li>
+                            <li><a href="{% url 'ecommerce_checkout' %} " key="t-checkout">Checkout</a></li>
+                            <li><a href="{% url 'ecommerce_shops' %} " key="t-shops">Shops</a></li>
+                            <li><a href="{% url 'ecommerce_add_product' %} " key="t-add-product">Add Product</a></li>
+                        </ul>
+                    </li>
+                    ================================================ -->
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="dripicons-mail"></i>
+                        <span key="t-email">Email</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{% url 'email_inbox' %}" key="t-inbox">Inbox</a></li>
+                        <li><a href="{% url 'email_read' %}" key="t-read-email">Email Read</a></li>
+                        <li><a href="{% url 'email_compose' %}" key="t-email-compose">Email Compose</a></li>
+                    </ul>
+                </li>
+                    <!----=============================  ecomm ====================================
+
+                <li class="menu-title" key="t-components">Components</li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="dripicons-suitcase"></i>
+                        <span key="t-ui-elements">UI Elements</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{% url 'ui_alerts' %}" key="t-alerts">Alerts</a></li>
+                        <li><a href="{% url 'ui_buttons' %}" key="t-buttons">Buttons</a></li>
+                        <li><a href="{% url 'ui_cards' %}" key="t-cards">Cards</a></li>
+                        <li><a href="{% url 'ui_carousel' %}" key="t-carousel">Carousel</a></li>
+                        <li><a href="{% url 'ui_dropdowns' %}" key="t-dropdowns">Dropdowns</a></li>
+                        <li><a href="{% url 'ui_grid' %}" key="t-grid">Grid</a></li>
+                        <li><a href="{% url 'ui_images' %}" key="t-images">Images</a></li>
+                        <li><a href="{% url 'ui_lightbox' %}" key="t-lightbox">Lightbox</a></li>
+                        <li><a href="{% url 'ui_modals' %}" key="t-modals">Modals</a></li>
+                        <li><a href="{% url 'ui_rangeslider' %}" key="t-range-slider">Range Slider</a></li>
+                        <li><a href="{% url 'ui_session_timeout' %}" key="t-session-timeout">Session Timeout</a></li>
+                        <li><a href="{% url 'ui_progressbars' %}" key="t-progress-bars">Progress Bars</a></li>
+                        <li><a href="{% url 'ui_sweet_alert' %}" key="t-sweet-alert">Sweet-Alert</a></li>
+                        <li><a href="{% url 'ui_tabs_accordions' %}" key="t-accordions">Accordions</a></li>
+                        <li><a href="{% url 'ui_typography' %}" key="t-typography">Typography</a></li>
+                        <li><a href="{% url 'ui_video' %}" key="t-video">Video</a></li>
+                        <li><a href="{% url 'ui_generals' %}" key="t-general">General</a></li>
+                        <li><a href="{% url 'ui_colors' %}" key="t-colors">Colors</a></li>
+                        <li><a href="{% url 'ui_rating' %}" key="t-rating">Rating</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript: void(0);" class="waves-effect">
+                        <i class="dripicons-to-do"></i>
+                        <span class="badge rounded-pill bg-danger float-end">8</span>
+                        <span key="t-forms">Forms</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{% url 'form_elements' %}" key="t-form-elements">Form Elements</a></li>
+                        <li><a href="{% url 'form_validation' %}" key="t-form-validation">Form Validation</a></li>
+                        <li><a href="{% url 'form_advanced' %}" key="t-form-advanced">Form Advanced</a></li>
+                        <li><a href="{% url 'form_editors' %}" key="t-form-editors">Form Editors</a></li>
+                        <li><a href="{% url 'form_upload' %}" key="t-form-upload">Form Upload</a></li>
+                        <li><a href="{% url 'form_xeditable' %}" key="t-form-xeditable">Form Xeditable</a></li>
+                        <li><a href="{% url 'form_wizard' %}" key="t-form-wizard">Form Wizard</a></li>
+                        <li><a href="{% url 'form_mask' %}" key="t-form-mask">Form Mask</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="dripicons-toggles"></i>
+                        <span key="t-tables">Tables</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{% url 'tables_basic' %}" key="t-basic-tables">Basic Tables</a></li>
+                        <li><a href="{% url 'tables_datatable' %}" key="t-data-tables">Data Tables</a></li>
+                        <li><a href="{% url 'tables_responsive' %}" key="t-responsive-table">Responsive Table</a></li>
+                        <li><a href="{% url 'tables_editable' %}" key="t-editable-table">Editable Table</a></li>
+                    </ul>
+                </li>
+
+
+                <li class="menu-title" key="t-extras">Extras</li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="dripicons-device-desktop"></i>
+                        <span key="t-layouts">Layouts</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="true">
+
+
+                    </ul>
+                </li>
+            -->
+
+
+
+            </ul>
+        </div>
+        <!-- Sidebar -->
+    </div>
+</div>
+<!-- Left Sidebar End -->
+{% endblock sidebar %}

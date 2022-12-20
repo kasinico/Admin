@@ -1,0 +1,358 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+
+{% block title %}Dashboard{% endblock title %}
+
+
+{% block extra_css %}
+<!-- plugin css -->
+<link href="{% static 'libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css' %}" rel="stylesheet"
+    type="text/css" />
+{% endblock extra_css %}
+
+{% block content %}
+<div class="main-content">
+    <div class="page-content">
+        <!-- start page title -->
+        <div class="page-title-box">
+            <div class="container-fluid">
+                <div class="row align-items-center">
+                    <div class="col-sm-6">
+                        <div class="page-title">
+                            <h4>Dashboard</h4>
+                            <ol class="breadcrumb m-0">
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">BODAAPP</a></li>
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
+                                <li class="breadcrumb-item active">Dashboard</li>
+                            </ol>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="float-end d-none d-sm-block">
+                            <a href="{% url 'addcrime' %}" class="btn btn-success">Add New Crime</a>
+                            
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end page title -->
+        <div class="container-fluid">
+            <div class="page-content-wrapper">
+                <div class="row">
+                    <div class="col-xl-8">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="header-title mb-4 float-sm-start">Quick Summary</h4>
+
+                                <div class="float-sm-end">
+                                    <ul class="nav nav-pills">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#">Day</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#">Week</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#">Month</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link active" href="#">Year</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="clearfix"></div>
+
+                                <div class="row align-items-center">
+                                    <div class="col-xl-9">
+                                        <div>
+                                            <div id="stacked-column-chart" class="apex-charts" dir="ltr"></div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4">
+                        <div class="row">
+                            <div class="col-xl-6 col-md-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="text-center">
+                                            <p class="font-size-16">Total</p>
+                                            <div class="mini-stat-icon mx-auto mb-4 mt-3">
+                                            </div>
+                                        <div class="table-responsive">
+                                            <table class="table table-centered table-nowrap mb-0">
+
+                                                <thead class="thead-light">
+        
+                                                    <tr>
+                                                        <th></th>
+                                                       
+                                                    </tr>
+                                                </thead>
+                                                {% for data in dataset %}
+                                                    
+                                                    <tr>
+                                                        <td>{{ data.id }}</td>
+                                                       
+                                                        
+                                                    </tr>
+        
+                                                {% endfor %}
+        
+                                                </thead>
+        
+                                            </table>
+                                        </div>
+                                           
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-md-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="text-center">
+                                            <p class="font-size-16">Users</p>
+                                            <div class="mini-stat-icon mx-auto mb-4 mt-3">
+                                                <span class="avatar-title rounded-circle bg-soft-success">
+                                                    <i class="mdi mdi-account-outline text-success font-size-20"></i>
+                                                </span>
+                                            </div>
+                                            <h5 class="font-size-22">136</h5>
+                                            <p class="text-muted">80% Target</p>
+                                            <div class="progress mt-3" style="height: 4px;">
+                                                <div class="progress-bar progress-bar bg-success" role="progressbar"
+                                                    style="width: 80%;" aria-valuenow="80" aria-valuemin="0"
+                                                    aria-valuemax="80"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="header-title mb-4">Total Impounded motocycles</h4>
+                                <div class="media">
+                                    <h4>14,235</h4>
+                                    <div class="media-body ps-3">
+                                        <div class="dropdown">
+                                            <button class="btn btn-light btn-sm dropdown-toggle" type="button"
+                                                id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true"
+                                                aria-expanded="false">
+                                                Today<i class="mdi mdi-chevron-down ms-1"></i>
+                                            </button>
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                <a class="dropdown-item" href="#">Yesterday</a>
+                                                <a class="dropdown-item" href="#">Last Week</a>
+                                                <a class="dropdown-item" href="#">Last Month</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mt-3">
+                                    <div id="stastics-chart"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p></p>
+                                    <!----=============================  ecomm ====================================
+
+                <div class="row">
+                    <div class="col-xl-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="header-title mb-4">Product Tracking</h4>
+                                <ul class="list-unstyled activity-wid mb-0">
+                                    <li class="activity-list activity-border">
+                                        <div class="activity-icon avatar-sm">
+                                            <img src="/static/images/users/avatar-7.jpg"
+                                                class="avatar-sm rounded-circle" alt="" />
+                                        </div>
+
+                                        <div class="media">
+                                            <div class="me-3">
+                                                <h5 class="font-size-15 mb-1">Your Manager Posted</h5>
+                                                <p class="text-muted font-size-14 mb-0">James Raphael</p>
+                                            </div>
+
+                                            <div class="media-body">
+                                                <div class="text-end d-none d-md-block">
+                                                    <p class="text-muted font-size-13 mt-2 pt-1 mb-0"><i
+                                                            class="mdi mdi-timer-outline font-size-15 text-primary"></i>
+                                                        3 days</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+
+
+
+                                    <li class="activity-list activity-border">
+                                        <div class="activity-icon avatar-sm">
+                                            <img src="/static/images/users/avatar-7.jpg"
+                                                class="avatar-sm rounded-circle" alt="" />
+                                        </div>
+                                        <div class="media">
+                                            <div class="me-3">
+                                                <h5 class="font-size-15 mb-1">Your Manager Posted</h5>
+                                                <p class="text-muted font-size-14 mb-0">James Raphael</p>
+                                            </div>
+                                            <div class="media-body">
+                                                <div class="text-end d-none d-md-block">
+                                                    <p class="text-muted font-size-13 mt-2 pt-1 mb-0"><i
+                                                            class="mdi mdi-timer-outline font-size-15 text-primary"></i>
+                                                        3 days</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="activity-list activity-border">
+                                        <div class="activity-icon avatar-sm">
+                                            <span class="avatar-title bg-soft-primary text-primary rounded-circle">
+                                                <i class="ti-shopping-cart font-size-16"></i>
+                                            </span>
+                                        </div>
+                                        <div class="media">
+                                            <div class="me-3">
+                                                <h5 class="font-size-15 mb-1">You have 1 pending order.</h5>
+                                                <p class="text-muted font-size-14 mb-0">Dubai</p>
+                                            </div>
+                                            <div class="media-body">
+                                                <div class="text-end d-none d-md-block">
+                                                    <p class="text-muted font-size-13 mt-2 pt-1 mb-0"><i
+                                                            class="mdi mdi-timer-outline font-size-15 text-primary"></i>
+                                                        1 day</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="activity-list">
+                                        <div class="activity-icon avatar-sm">
+                                            <span class="avatar-title bg-soft-success text-success rounded-circle">
+                                                <i class="ti-user font-size-16"></i>
+                                            </span>
+                                        </div>
+                                        <div class="media">
+                                            <div class="me-3">
+                                                <h5 class="font-size-15 mb-1">New Order Received</h5>
+                                                <p class="text-muted font-size-14 mb-0">Thank You</p>
+                                            </div>
+                                            <div class="media-body">
+                                                <div class="text-end d-none d-md-block">
+                                                    <p class="text-muted font-size-13 mt-2 pt-1 mb-0"><i
+                                                            class="mdi mdi-timer-outline font-size-15 text-primary"></i>
+                                                        Today</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            -->
+                <div class="row">
+
+                    <div class="col-xl-8">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="header-title mb-4">List of impounded Bodas</h4>
+                                <div class="table-responsive">
+                                    <table class="table table-centered table-nowrap mb-0">
+                                        <thead class="thead-light">
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Number Plate</th>
+
+                                                <th>Name </th>
+                                                <th>Police Station</th>
+                                                <th>Date</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>#2356</td>
+                                                <td>UBL 345T </td>
+                                                <td>Kenneth Gittens</td>
+                                                <td>Kabalagala</td>
+                                                <td>42</td>
+                                                <td><span
+                                                        class="badge badge-pill badge-soft-primary font-size-13">Pending</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>#2564</td>
+                                                <td>UBL 345T</td>
+                                                <td>Alfred Gordon</td>
+                                                <td>Kampala RD</td>
+                                                <td>54</td>
+                                                <td><span
+                                                        class="badge badge-pill badge-soft-success font-size-13">Active</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>#2125</td>
+                                                <td>UBL 345T</td>
+                                                <td>Keena Reyes</td>
+                                                <td>Jinja Rd</td>
+                                                <td>65</td>
+                                                <td><span
+                                                        class="badge badge-pill badge-soft-success font-size-13">Active</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>#8587</td>
+                                                <td>UBL 345T</td>
+                                                <td>Timothy Zuniga</td>
+                                                <td>Kiira Rd</td>
+                                                <td>52</td>
+                                                <td><span
+                                                        class="badge badge-pill badge-soft-primary font-size-13">Pending</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>#2354</td>
+                                                <td>UBL 345T</td>
+                                                <td>Joann Wiliams</td>
+                                                <td>Kiira Rd</td>
+                                                <td></td>
+                                                <td><span
+                                                        class="badge badge-pill badge-soft-primary font-size-13">Pending</span>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- end table-responsive -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- container-fluid -->
+</div>
+<!-- End Page-content -->
+{% endblock content %}
+{% block extra_javascript %}
+<!-- apexcharts -->
+<script src="{% static 'libs/apexcharts/dist/apexcharts.min.js' %}"></script>
+<!-- Plugins js-->
+<script src="{% static 'libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js' %}"></script>
+<script src="{% static 'libs/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js' %}"></script>
+
+<script src="{% static 'js/pages/dashboard.init.js' %}"></script>
+{% endblock extra_javascript %}
