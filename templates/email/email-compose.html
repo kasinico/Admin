@@ -91,19 +91,25 @@
                                 <div class="email-rightbar mb-3">
                                     <div class="card">
                                         <div class="card-body">
-                                            <form>
+                                            <form method="post">
+                                                {% csrf_token %}
+
                                                 <div class="mb-3">
-                                                    <input type="email" class="form-control" placeholder="To">
-                                                </div>
-                                                    <div class="mb-3">
-                                                    <input type="text" class="form-control" placeholder="Subject">
+                                                    <input type="email" name="to_email" class="form-control" placeholder="To">
                                                 </div>
                                                 <div class="mb-3">
-                                                    <form method="post">
-                                                        <textarea id="elm1" name="area"></textarea>
-                                                    </form>
+                                                    <input type="text" name="subject" class="form-control" placeholder="Subject">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <textarea id="elm1" name="message"></textarea>
+                                                </div>
+                                                <button type="submit" class="btn btn-primary">Send</button>
+                                            </form>
+                                            
                                                 </div>
                                             </form>
+                                          
+                                            
                                         </div>
                                     </div>
                                 </div> 

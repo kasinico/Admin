@@ -4,5 +4,5 @@ urlpatterns = [
     # Email
     path('email_inbox', views.EmailInbox.as_view(),name='email_inbox'),
     path('email_read', views.EmailRead.as_view(),name='email_read'),
-    path('email_compose', views.EmailCompose.as_view(),name='email_compose'),
+    path('email/email-compose', views.EmailCompose,name='email_compose'),
 ]

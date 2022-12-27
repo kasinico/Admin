@@ -28,12 +28,17 @@ from django.contrib.auth.decorators import login_required
 urlpatterns = [
     path('admin/', admin.site.urls),
     # Index
-    path('', views.Index.as_view(),name='index'),
+    path('', views.index,name='index'),
+    #path('', views.index,name='index'),
+
     # Calendar
     path('calendar/', views.Calendar.as_view(),name='calendar'),
    
    # Chat
     path('chat/', views.Chat.as_view(),name='chat'),
+
+
+
     # Ecommerce
     path('ecommerce/', include('ecommerce.urls')),
     # Email
@@ -57,6 +62,7 @@ urlpatterns = [
      # addcrime
     path('addcrime/', views.addcrime,name='addcrime'),
 
+
     # List view of addcrime
     path('list_view/', views.list_view,name='list_view'),
 
@@ -72,6 +78,8 @@ urlpatterns = [
 
     #delete
     path('delete/<int:id>', views.delete, name='delete'),
+
+
 
 
 

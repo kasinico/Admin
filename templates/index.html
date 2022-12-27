@@ -81,32 +81,12 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="text-center">
-                                            <p class="font-size-16">Total</p>
+                                            <p class="font-size-16">Total Crimes</p>
                                             <div class="mini-stat-icon mx-auto mb-4 mt-3">
                                             </div>
                                         <div class="table-responsive">
-                                            <table class="table table-centered table-nowrap mb-0">
-
-                                                <thead class="thead-light">
-        
-                                                    <tr>
-                                                        <th></th>
-                                                       
-                                                    </tr>
-                                                </thead>
-                                                {% for data in dataset %}
-                                                    
-                                                    <tr>
-                                                        <td>{{ data.id }}</td>
-                                                       
-                                                        
-                                                    </tr>
-        
-                                                {% endfor %}
-        
-                                                </thead>
-        
-                                            </table>
+                                            {{ count }}
+                                               
                                         </div>
                                            
                                         </div>
@@ -262,6 +242,8 @@
 
                 </div>
             -->
+            <img src="{% static 'images/crime_type_chart.png' %}" alt="Crime Type Chart">
+
                 <div class="row">
 
                     <div class="col-xl-8">

@@ -7,15 +7,35 @@ from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.shortcuts import redirect, render, get_object_or_404
 
 # relative import of forms
-from .models import CrimeModel
+from .models import CrimeCount, CrimeModel
 from .forms import CrimeForm
+from .forms import EmailComposeForm
+from .forms import ChatMessageForm
 from django.views.generic import DeleteView
 from django.urls import reverse
+from .models import ChatMessage #chatmessages
+from django.core.mail import send_mail
+from django.core.paginator import Paginator
+
+#aws amplifye key
+#852324837929  | acess AKIA4M4UE5IU4DVBVN7C | secret key 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
 
 
 
-class Index(LoginRequiredMixin,TemplateView):
-    template_name = "index.html"
+
+#class Index(LoginRequiredMixin,TemplateView):
+    #template_name = "index.html"
+
+
+#index page Dashboard with counter
+def index(request):
+    context = {}
+
+    # Count the number of CrimeModel objects
+    context['count'] = CrimeModel.objects.count()
+
+    return render(request, 'index.html', context)
+
     
 class Calendar(LoginRequiredMixin,TemplateView):
     template_name = "calendar.html"
@@ -31,6 +51,7 @@ class MyPasswordSetView(LoginRequiredMixin, PasswordSetView):
 
 
 #logic for add crime input
+# ============================ Start functions for crud Addcrime ====================
 """def addcrime(request):
     # dictionary for initial data with
     # field names as keys
@@ -60,14 +81,14 @@ def addcrime(request):
 
 #list/show crime view
 def list_view(request):
-    # retrieve the object with the given pk
+     # retrieve the object with the given pk
     # dictionary for initial data with
     # field names as keys
+    paginator = Paginator(CrimeModel.objects.all(), 5) # 5 is the number of objects per page
+    page = request.GET.get('page')
+    objects = paginator.get_page(page)
     context ={}
-
-    # VARIABLE TO HOLD RETURN VALUE, modelname.odel obj atrributes.all-method
-    context["dataset"] = CrimeModel.objects.all()
-
+    context["dataset"] = objects
     return render(request, "list_view.html", context)
 
 
@@ -91,3 +112,37 @@ def delete(request, id):
     crime = get_object_or_404(CrimeModel, pk=id)
     crime.delete()
     return redirect('list_view')
+
+# ============================ End functions for crud Addcrime ====================
+
+
+
+#chat message
+# ============================ Start functions for chat message ====================
+
+def chat(request):
+    messages = ChatMessage.objects.all()
+    return render(request, 'chat.html', {'messages': messages})
+
+def chat_view(request):
+    # Get all chat messages in the database
+    chat_messages = ChatMessage.objects.all()
+
+    # Create an instance of the ChatMessageForm
+    form = ChatMessageForm()
+
+    # If the request method is POST, it means the form has been submitted
+    if request.method == 'POST':
+        # Bind the form data to the form instance
+        form = ChatMessageForm(request.POST)
+        # Check if the form is valid
+        if form.is_valid():
+            # Save the form data to the database
+            form.save()
+            # Redirect to the same page to show the updated list of chat messages
+            return redirect('chat_view')
+
+    # Render the chat view template, passing the form and chat_messages as context
+    return render(request, 'chat.html', {'form': form, 'chat_messages': chat_messages})
+
+

@@ -6,14 +6,11 @@ from django.http import HttpResponseNotAllowed
 
 
 
+
+
 # Create your models here.
 
-
-
-
-
-
-
+#================================= start models for crud Addcrime ===============
 class CrimeModel(models.Model):
     # fields of the model
     CUSTODY_CHOICES = [
@@ -34,8 +31,29 @@ class CrimeModel(models.Model):
     # with their title name
 
     class Meta:
-        db_table = "morvin_crimemodel"
+        db_table = "crimemodel"
         ordering = ['pk'] 
 
     def __str__(self):
         return self.name 
+#================================= End models for crud Addcrime ===============
+
+
+#message Chat
+#================================= start models for Message Chat ===============
+
+class ChatMessage(models.Model):
+    sender = models.CharField(max_length=200)
+    receiver = models.CharField(max_length=200)
+    message = models.TextField()
+    timestamp = models.DateTimeField(auto_now_add=True)
+
+
+
+
+
+#counter
+
+class CrimeCount(models.Model):
+    count = models.PositiveIntegerField()
+    
