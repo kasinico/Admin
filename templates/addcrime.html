@@ -30,7 +30,7 @@
         <div class="container-fluid">
             <div class="page-content-wrapper">
                 <p></p>
-                <form method="POST"  class="CrimeForm" enctype="multipart/form-data">
+                <form method="POST" class="CrimeForm" enctype="multipart/form-data">
                     {% csrf_token %}
 
 
@@ -105,14 +105,15 @@
 
 
                                     <div class="row mb-3">
-                                        <label class="col-sm-2 col-form-label">Custody Destination</label>
+                                        <label for="custody" class="col-sm-2 col-form-label">Select Custody
+                                            Option</label>
                                         <div class="col-sm-6">
-                                            <select class="form-select" name="custody"
+                                            <select class="form-select" id="custody" name="custody"
                                                 aria-label="Default select example">
-                                                <option selected="">Jinja Rd Police</option>
-                                                <option value="">Rubaga Div Police</option>
-                                                <option value="">Kiira Rd Police</option>
-                                                <option value="">Wandegeya div Police</option>
+                                                <option value="Jinja Rd Police" selected>Jinja Rd Police</option>
+                                                <option value="Rubaga Div Police">Rubaga Div Police</option>
+                                                <option value="Kiira Rd Police">Kiira Rd Police</option>
+                                                <option value="Wandegeya div Police">Wandegeya div Police</option>
                                             </select>
                                         </div>
                                     </div>
