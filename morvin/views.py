@@ -4,11 +4,14 @@ from allauth.account.views import PasswordSetView,PasswordChangeView
 from django.urls import reverse, reverse_lazy
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render, get_object_or_404
 
 # relative import of forms
 from .models import CrimeModel
 from .forms import CrimeForm
+from django.views.generic import DeleteView
+from django.urls import reverse
+
 
 
 class Index(LoginRequiredMixin,TemplateView):
@@ -42,35 +45,49 @@ class MyPasswordSetView(LoginRequiredMixin, PasswordSetView):
         form.save()
     return HttpResponse(status=200)
     """
-
 def addcrime(request):
-    if request.method == "POST":  
-        form = CrimeForm(request.POST)  
+    # create a new instance of CrimeModel
+    my_model_instance = CrimeModel()
+    if request.method == "POST":
+        form = CrimeForm(request.POST, instance=my_model_instance)  
         if form.is_valid():  
-            try:  
-                form.save()  
-                return redirect('/list_view')  
-            except:  
-                pass  
+            form.save()  
+            return redirect('/list_view')  
     else:  
-        form = CrimeForm()  
+        form = CrimeForm(instance=my_model_instance)  
     return render(request,'addcrime.html',{'form':form})  
+ 
 
 #list/show crime view
 def list_view(request):
-	# dictionary for initial data with
-	# field names as keys
-	context ={}
+    # retrieve the object with the given pk
+    # dictionary for initial data with
+    # field names as keys
+    context ={}
 
-	# VARIABLE TO HOLD RETURN VALUE, modelname.odel obj atrributes.all-method
-	context["dataset"] = CrimeModel.objects.all()
-	
-    	
-	return render(request, "list_view.html", context)
+    # VARIABLE TO HOLD RETURN VALUE, modelname.odel obj atrributes.all-method
+    context["dataset"] = CrimeModel.objects.all()
+
+    return render(request, "list_view.html", context)
+
 
 
 #edit member crime
-def edit(request, id): 
-    context = {} 
-    context["dataset"] = CrimeModel.objects.get(id=id)  
-    return render(request,'edit.html', context)  
+def edit(request, id):
+    my_model_instance = get_object_or_404(CrimeModel, id=id)
+    if request.method == 'POST':
+        form = CrimeForm(request.POST, instance=my_model_instance)
+        if form.is_valid():
+            form.save()
+            return redirect('list_view')
+    else:
+        form = CrimeForm(instance=my_model_instance)
+    return render(request, 'edit.html', {'form': form})
+
+
+
+#delete crime row
+def delete(request, id):
+    crime = get_object_or_404(CrimeModel, pk=id)
+    crime.delete()
+    return redirect('list_view')

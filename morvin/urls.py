@@ -61,8 +61,18 @@ urlpatterns = [
     path('list_view/', views.list_view,name='list_view'),
 
     #edit path
-    path('list_view/edit/<int:id>', views.edit), 
+    #path('list_view/edit/<int:id>', views.edit), 
      
+
+
+
+    #edit path
+    #path('edit/<int:pk>', views.edit, name='edit'),
+    path('list_view/edit/<int:id>', views.edit, name='edit'),
+
+    #delete
+    path('delete/<int:id>', views.delete, name='delete'),
+
 
 
 

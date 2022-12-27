@@ -30,7 +30,7 @@
         <div class="container-fluid">
             <div class="page-content-wrapper">
                 <p></p>
-                <form method="POST" action="{% url 'list_view' %}" enctype="multipart/form-data">
+                <form method="POST" action="{% url 'list_view' id=data.id %}" enctype="multipart/form-data">
                     {% csrf_token %}
                    
                     <div class="row">
@@ -42,7 +42,7 @@
                             <label for="name" class="col-sm-6 col-form-label">Full
                                 Name</label>
                             <div class="col-sm-3">
-                                <input class="form-control" type="text" name="name" value="{{mymember.name}}"
+                                <input class="form-control" type="text" name="name" value="{{dataset.name}}"
                                     placeholder="" id="example-text-input">
                             </div>
 
@@ -50,11 +50,11 @@
                                 crime</label>
                             <div class="col-sm-3">
                                 <input class="form-control" type="text" name="crime_type"
-                                    value="{{mymember.crime_type}}" placeholder="" id="example-text-input">
+                                    value="{{dataset.crime_type}}" placeholder="" id="example-text-input">
                             </div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-success " value="Submit" name="Submit">Save</button>
+                    <button type="submit" class="btn btn-primary " value="Submit" name="Submit">Save</button>
                     <i class="form-group__bar"></i>
 
                 </form>
