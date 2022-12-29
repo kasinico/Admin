@@ -166,8 +166,55 @@ page {{ page }} of {{ paginator.num_pages }}
                 </div>
             </div>
         </div>
+        <div id="todo-column" style="background-color: blue; color: white; font-size: 16px;">
+            <div id="todo-column" class="column">
+              <h2>Todo</h2>
+              <!-- Add your todo cards here -->
+            </div>
+            <div id="doing-column" class="column">
+              <h2>Doing</h2>
+              <!-- Add your doing cards here -->
+            </div>
+            <div id="done-column" class="column">
+              <h2>Done</h2>
+              <!-- Add your done cards here -->
+            </div>
+          </div>
+          <script>
+            const todoColumn = document.getElementById("todo-column");
+const doingColumn = document.getElementById("doing-column");
+const doneColumn = document.getElementById("done-column");
+
+function allowDrop(ev) {
+  ev.preventDefault();
+}
+
+function drag(ev) {
+  ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+  ev.preventDefault();
+  const data = ev.dataTransfer.getData("text");
+  ev.target.appendChild(document.getElementById(data));
+}
+
+todoColumn.addEventListener("drop", drop);
+todoColumn.addEventListener("dragover", allowDrop);
+doingColumn.addEventListener("drop", drop);
+doingColumn.addEventListener("dragover", allowDrop);
+doneColumn.addEventListener("drop", drop);
+doneColumn.addEventListener("dragover", allowDrop);
+
+          </script>
+          <div class="card" draggable="true" ondragstart="drag(event)">
+            <!-- Card content -->
+          </div>
+          
     </div>
     <!-- container-fluid -->
+  
+      
 </div>
 <!-- End Page-content -->
 {% endblock content %}
