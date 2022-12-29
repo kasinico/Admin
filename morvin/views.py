@@ -17,7 +17,6 @@ from .models import ChatMessage #chatmessages
 from django.core.mail import send_mail
 from django.core.paginator import Paginator
 
-#852324837929  | acess AKIA4M4UE5IU4DVBVN7C | secret key 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
 
 
 
