@@ -30,7 +30,7 @@
         <div class="container-fluid">
             <div class="page-content-wrapper">
                 <p></p>
-                <form method="POST" action="{% url 'list_view' id=data.id %}" enctype="multipart/form-data">
+                <form method="POST" action="{% url 'list_view' %}" enctype="multipart/form-data">
                     {% csrf_token %}
                    
                     <div class="row">

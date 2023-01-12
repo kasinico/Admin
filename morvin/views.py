@@ -94,12 +94,16 @@ def list_view(request):
     objects = paginator.get_page(page)
     context = {}
     context["dataset"] = objects
+    
+    
+    
+    
     return render(request, "list_view.html", context)
 
 
 # edit member crime
 def edit(request, id):
-    my_model_instance = get_object_or_404(CrimeModel, id=id)
+    my_model_instance = get_object_or_404(CrimeModel)
     if request.method == 'POST':
         form = CrimeForm(request.POST, instance=my_model_instance)
         if form.is_valid():
