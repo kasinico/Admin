@@ -51,6 +51,7 @@ urlpatterns = [
     path('extras/', include('extras.urls')),
     # Allauth
     path('account/', include('allauth.urls')),
+
     # logout
     path('logout/', TemplateView.as_view(template_name="account/logout-success.html"),name="logout"),
     #Custum change password done page redirect
