@@ -30,7 +30,7 @@ def index(request):
     # Count the number of CrimeModel objects
     context['count'] = CrimeModel.objects.count()
 
-    return render(request, 'index.html', context)
+    return render(request, 'index.html', context=context)
 
 
 class Calendar(LoginRequiredMixin, TemplateView):
@@ -103,7 +103,9 @@ def list_view(request):
 
 # edit member crime
 def edit(request, id):
-    my_model_instance = get_object_or_404(CrimeModel)
+    #my_model_instance = get_object_or_404(CrimeModel)
+    my_model_instance = get_object_or_404(CrimeModel, id=id)
+
     if request.method == 'POST':
         form = CrimeForm(request.POST, instance=my_model_instance)
         if form.is_valid():

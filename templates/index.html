@@ -8,9 +8,23 @@
 <!-- plugin css -->
 <link href="{% static 'libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css' %}" rel="stylesheet"
     type="text/css" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.0/fullcalendar.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.0/fullcalendar.print.css" media="print" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.0/fullcalendar.min.js"></script>
+
+    <script src="{% static 'js/calendar.js' %}"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="{% static 'js/fullcalendar/main.min.js' %}"></script>
+
+
+    
 {% endblock extra_css %}
 
 {% block content %}
+
 <div class="main-content">
     <div class="page-content">
         <!-- start page title -->
@@ -20,17 +34,21 @@
                     <div class="col-sm-6">
                         <div class="page-title">
                             <h4>Dashboard</h4>
-                            <ol class="breadcrumb m-0">
-                                <li class="breadcrumb-item"><a href="javascript: void(0);">BODAAPP</a></li>
-                                <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
-                                <li class="breadcrumb-item active">Dashboard</li>
-                            </ol>
+                           
                         </div>
+
+                        {% if user.is_authenticated %}
+                        <p>Welcome, {{ user.username }}!</p>
+                        {% endif %}
                     </div>
+                    
                     <div class="col-sm-6">
                         <div class="float-end d-none d-sm-block">
-                            <a href="{% url 'addcrime' %}" class="btn btn-success">Add New Crime</a>
-                            
+                            {% if user.is_authenticated %}
+                                <a href="{% url 'addcrime' %}" class="btn btn-success">Add New Crime</a>
+                            {% endif %}
+
+                                                        
                         </div>
                         
                     </div>
@@ -241,7 +259,7 @@
 
 
                 </div>
-            -->
+            ##----------------------------------------------------- -->
             <img src="{% static 'images/crime_type_chart.png' %}" alt="Crime Type Chart">
 
                 <div class="row">
@@ -319,12 +337,47 @@
                                 </div>
                                 <!-- end table-responsive -->
                             </div>
+
+
+
+                        </div>
+                        
+                    </div>
+
+
+                    <div class="col-xl-4">
+                        <div class="card" id="calendar">
+                            <div class="card-body">
+                                <h4 class="header-title mb-4">Calendar</h4>
+                                <div id="calendar"></div>
+                                <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
+                                <script>
+                                    (function($) {
+                                        $(document).ready(function() {
+                                            var calendarEl = document.getElementById('calendar');
+                                            var calendar = new FullCalendar.Calendar(calendarEl, {
+                                                initialView: 'dayGridMonth'
+                                            });
+                                            calendar.render();
+                                        });
+                                    })(jQuery);
+                                    
+                                </script>
+                            </div>
                         </div>
                     </div>
+                    
+
+
+
+
                 </div>
             </div>
         </div>
     </div>
+ 
+        
+</script>
     <!-- container-fluid -->
 </div>
 <!-- End Page-content -->
@@ -337,4 +390,8 @@
 <script src="{% static 'libs/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js' %}"></script>
 
 <script src="{% static 'js/pages/dashboard.init.js' %}"></script>
+
+
+
+
 {% endblock extra_javascript %}

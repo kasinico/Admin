@@ -40,12 +40,35 @@
                                     <form class="form-horizontal" method="POST">
                                         {% csrf_token %}
                                         {{ form|crispy }}
-                                        <div class="mt-4">
-                                            <button class="btn btn-primary w-100 waves-effect waves-light" type="submit">Register</button>
-                                        </div>
-                                        
                                        
-                                    </form>
+    <div class="input-group">
+        <input type="password" id="password1" class="form-control" placeholder="New Password" aria-label="New Password" aria-describedby="show-password">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" type="button" id="show-password"><i class="fa fa-eye"></i></button>
+        </div>
+      </div>
+  
+      <div class="mt-4">
+        <button class="btn btn-primary w-100 waves-effect waves-light" type="submit">Register</button>
+      </div>
+    </form>
+  
+    <script>
+      $(function() {
+        $('#show-password').on('click', function() {
+          var passwordField = $('#password1');
+          var passwordFieldType = passwordField.attr('type');
+          if (passwordFieldType == 'password') {
+            passwordField.attr('type', 'text');
+            $(this).find('i').removeClass('fa-eye').addClass('fa-eye-slash');
+          } else {
+            passwordField.attr('type', 'password');
+            $(this).find('i').removeClass('fa-eye-slash').addClass('fa-eye');
+          }
+        });
+      });
+    </script>
+                                    
                                 </div>
                             </div>
                         </div>
