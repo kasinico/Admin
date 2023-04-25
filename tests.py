@@ -17,7 +17,7 @@ driver.get('http://localhost:8000/account/login')
 # /html/body/div/div/div/div[2]/div/div[1]/div/div/form/div[4]
 # //*[@id="app"]/div[1]/div[2]/main/div[3]/button
 username = driver.find_element("xpath", '//*[@id="username"]')
-username.send_keys('***')
+username.send_keys('****')
 password = driver.find_element("xpath", '//*[@id="password"]')
 password.send_keys('***')
 login = driver.find_element("xpath", 
