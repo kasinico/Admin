@@ -8,7 +8,21 @@ class CrimeForm(forms.ModelForm):
         model = CrimeModel
         fields = ['name', 'crime_type', 'license', 'occupation', 'stage', 'telephone', 'custody']
 
-    custody = forms.ChoiceField(choices=CrimeModel.CUSTODY_CHOICES)
+    custody = forms.ChoiceField(choices=CrimeModel.CUSTODY_CHOICES, required=True)
+
+    def __init__(self, *args, **kwargs):
+        super(CrimeForm, self).__init__(*args, **kwargs)
+        for field in self.fields.values():
+            field.widget.attrs['required'] = 'required'
+
+    def as_form(self):
+        return self._html_output(
+            normal_row='<div class="form-group">{label}<div class="input-group">{field}{help_text}</div></div>',
+            error_row='%s',
+            row_ender='</div>',
+            help_text_html='<span class="help-text">%s</span>',
+            errors_on_separate_row=True)
+
 
 
 
