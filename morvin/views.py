@@ -32,6 +32,12 @@ def index(request):
 
     return render(request, 'index.html', context=context)
 
+#profile page
+def profile(request):
+    context = {}
+
+    return render(request, 'profile.html', context=context)
+
 
 class Calendar(LoginRequiredMixin, TemplateView):
     template_name = "calendar.html"
@@ -94,9 +100,6 @@ def list_view(request):
     objects = paginator.get_page(page)
     context = {}
     context["dataset"] = objects
-    
-    
-    
     
     return render(request, "list_view.html", context)
 

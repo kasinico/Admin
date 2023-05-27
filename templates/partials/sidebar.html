@@ -19,8 +19,13 @@
         </div>
         <div class="user-info">
           <h5 class="mt-3 font-size-16 text-white">{{ user.username }}</h5>
-          <span class="font-size-13 text-white-50">Sample Rank</span>
+           <!-- <span class="font-size-13 text-white-50">Sample Rank</span> -->
         </div>
+        <!--tart profile page link, dripicons-calendar-->
+        <a href="{% url 'profile' %}" class="waves-effect">
+          <i class="user-info"></i>
+          <span key="profile-user">Profile</span>
+        </a>
       </div>
     </div>
     <!--- Sidemenu -->

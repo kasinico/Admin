@@ -62,6 +62,10 @@ urlpatterns = [
 
      # addcrime
     path('addcrime/', views.addcrime,name='addcrime'),
+    
+    #profilepage view
+    path('profile/', views.profile,name='profile'),
+
 
 
     # List view of addcrime
