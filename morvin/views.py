@@ -24,13 +24,14 @@ from django.core.paginator import Paginator
 
 
 # index page Dashboard with counter
+from django.shortcuts import redirect
+
 def index(request):
-    context = {}
+    if request.user.is_authenticated:
+        return redirect('list_view')
+    else:
+        return render(request, 'account/login.html')
 
-    # Count the number of CrimeModel objects
-    context['count'] = CrimeModel.objects.count()
-
-    return render(request, 'index.html', context)
 
 
 class Calendar(LoginRequiredMixin, TemplateView):
