@@ -32,6 +32,7 @@ def index(request):
     else:
         return render(request, 'account/login.html')
 
+    return render(request, 'index.html', context=context)
 
 
 class Calendar(LoginRequiredMixin, TemplateView):
