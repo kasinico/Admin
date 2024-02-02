@@ -26,6 +26,8 @@ from django.core.paginator import Paginator
 
 
 # index page Dashboard with counter
+from django.shortcuts import redirect
+
 def index(request):
     context = {}
 

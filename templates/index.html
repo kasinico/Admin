@@ -1,167 +1,219 @@
-{% extends 'partials/base.html' %}
-{% load static %}
-
-{% block title %}Dashboard{% endblock title %}
-
-
-{% block extra_css %}
+{% extends 'partials/base.html' %} {% load static %} {% block title
+%}Dashboard{% endblock title %} {% block extra_css %}
 <!-- plugin css -->
-<link href="{% static 'libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css' %}" rel="stylesheet"
-    type="text/css" />
+<link
+  href="{% static 'libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css' %}"
+  rel="stylesheet"
+  type="text/css"
+/>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.0/fullcalendar.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.0/fullcalendar.print.css" media="print" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.0/fullcalendar.min.js"></script>
-
-    <script src="{% static 'js/calendar.js' %}"></script>
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="{% static 'js/fullcalendar/main.min.js' %}"></script>
-
-
-    
-{% endblock extra_css %}
-
-{% block content %}
-
+<link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" />
+{% endblock extra_css %} {% block content %}
 <div class="main-content">
-    <div class="page-content">
-        <!-- start page title -->
-        <div class="page-title-box">
-            <div class="container-fluid">
-                <div class="row align-items-center">
-                    <div class="col-sm-6">
-                        <div class="page-title">
-                            <h4>Dashboard</h4>
-                           
-                        </div>
+  <div class="page-content">
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top">
+      <div
+        class="container d-flex align-items-center justify-content-lg-between"
+      >
+        <h1 class="logo me-auto me-lg-0">
+          <a href="#">Logo<span>.</span></a>
+        </h1>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="index.html" class="logo me-auto me-lg-0"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
-                        {% if user.is_authenticated %}
-                        <p>Welcome, {{ user.username }}!</p>
-                        {% endif %}
-                    </div>
-                    
-                    <div class="col-sm-6">
-                        <div class="float-end d-none d-sm-block">
-                            {% if user.is_authenticated %}
-                                <a href="{% url 'addcrime' %}" class="btn btn-success">Add New Crime</a>
-                            {% endif %}
+        <nav id="navbar" class="navbar order-last order-lg-0">
+          <ul>
+            <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+            <li><a class="nav-link scrollto" href="#about">About</a></li>
+            <li><a class="nav-link scrollto" href="#services">Services</a></li>
+            <li>
+              <a class="nav-link scrollto" href="#portfolio">Portfolio</a>
+            </li>
+            <li><a class="nav-link scrollto" href="#team">Team</a></li>
+            <li class="dropdown">
+              <a href="#"
+                ><span>Drop Down</span> <i class="bi bi-chevron-down"></i
+              ></a>
+              <ul>
+                <li><a href="#">Drop Down 1</a></li>
+                <li class="dropdown">
+                  <a href="#"
+                 ><span>Deep Drop Down</span>
+                    <i class="bi bi-chevron-right"></i
+                  ></a>
+                  <ul>
+                    <li><a href="#">Deep Drop Down 1</a></li>
+                    <li><a href="#">Deep Drop Down 2</a></li>
+                    <li><a href="#">Deep Drop Down 3</a></li>
+                  </ul>
+                </li>
+                <li><a href="#">Drop Down 2</a></li>
+                <li><a href="#">Drop Down 3</a></li>
+                <li><a href="#">Drop Down 4</a></li>
+              </ul>
+            </li>
+            <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+          </ul>
+          <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav>
+        <!-- .navbar -->
 
-                                                        
-                        </div>
-                        
-                    </div>
-                </div>
+        <a href="#about" class="get-started-btn scrollto">Get Started</a>
+      </div>
+    </header>
+    <!-- End Header -->
+
+    <!-- start page title -->
+    <div class="page-title-box">
+      <div class="container-fluid">
+        <div class="row align-items-center">
+          <div class="col-sm-6">
+            <div class="page-title">
+              <h4>Dashboard</h4>
+              <ol class="breadcrumb m-0">
+                <li class="breadcrumb-item">
+                  <a href="javascript: void(0);">BODAAPP</a>
+                </li>
+                <li class="breadcrumb-item">
+                  <a href="javascript: void(0);">Dashboard</a>
+                </li>
+                <li class="breadcrumb-item active">Dashboard</li>
+              </ol>
             </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="float-end d-none d-sm-block">
+              <a href="{% url 'addcrime' %}" class="btn btn-success"
+                >Add New Crime</a
+              >
+            </div>
+          </div>
         </div>
-        <!-- end page title -->
-        <div class="container-fluid">
-            <div class="page-content-wrapper">
-                <div class="row">
-                    <div class="col-xl-8">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="header-title mb-4 float-sm-start">Quick Summary</h4>
+      </div>
+    </div>
+    <!-- end page title -->
+    <div class="container-fluid">
+      <div class="page-content-wrapper">
+        <div class="row">
+          <div class="col-xl-8">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="header-title mb-4 float-sm-start">Quick Summary</h4>
 
-                                <div class="float-sm-end">
-                                    <ul class="nav nav-pills">
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="#">Day</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="#">Week</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="#">Month</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link active" href="#">Year</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="clearfix"></div>
-
-                                <div class="row align-items-center">
-                                    <div class="col-xl-9">
-                                        <div>
-                                            <div id="stacked-column-chart" class="apex-charts" dir="ltr"></div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4">
-                        <div class="row">
-                            <div class="col-xl-6 col-md-6">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="text-center">
-                                            <p class="font-size-16">Total Crimes</p>
-                                            <div class="mini-stat-icon mx-auto mb-4 mt-3">
-                                            </div>
-                                        <div class="table-responsive">
-                                            {{ count }}
-                                               
-                                        </div>
-                                           
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-6 col-md-6">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="text-center">
-                                            <p class="font-size-16">Users</p>
-                                            <div class="mini-stat-icon mx-auto mb-4 mt-3">
-                                                <span class="avatar-title rounded-circle bg-soft-success">
-                                                    <i class="mdi mdi-account-outline text-success font-size-20"></i>
-                                                </span>
-                                            </div>
-                                            <h5 class="font-size-22">136</h5>
-                                            <p class="text-muted">80% Target</p>
-                                            <div class="progress mt-3" style="height: 4px;">
-                                                <div class="progress-bar progress-bar bg-success" role="progressbar"
-                                                    style="width: 80%;" aria-valuenow="80" aria-valuemin="0"
-                                                    aria-valuemax="80"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="header-title mb-4">Total Impounded motocycles</h4>
-                                <div class="media">
-                                    <h4>14,235</h4>
-                                    <div class="media-body ps-3">
-                                        <div class="dropdown">
-                                            <button class="btn btn-light btn-sm dropdown-toggle" type="button"
-                                                id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true"
-                                                aria-expanded="false">
-                                                Today<i class="mdi mdi-chevron-down ms-1"></i>
-                                            </button>
-                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                <a class="dropdown-item" href="#">Yesterday</a>
-                                                <a class="dropdown-item" href="#">Last Week</a>
-                                                <a class="dropdown-item" href="#">Last Month</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="mt-3">
-                                    <div id="stastics-chart"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="float-sm-end">
+                  <ul class="nav nav-pills">
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">Day</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">Week</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">Month</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link active" href="#">Year</a>
+                    </li>
+                  </ul>
                 </div>
-                <p></p>
-                                    <!----=============================  ecomm ====================================
+                <div class="clearfix"></div>
+
+                <div class="row align-items-center">
+                  <div class="col-xl-9">
+                    <div>
+                      <div
+                        id="stacked-column-chart"
+                        class="apex-charts"
+                        dir="ltr"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-4">
+            <div class="row">
+              <div class="col-xl-6 col-md-6">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="text-center">
+                      <p class="font-size-16">Total Crimes</p>
+                      <div class="mini-stat-icon mx-auto mb-4 mt-3"></div>
+                      <div class="table-responsive">{{ count }}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-6 col-md-6">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="text-center">
+                      <p class="font-size-16">Users</p>
+                      <div class="mini-stat-icon mx-auto mb-4 mt-3">
+                        <span
+                          class="avatar-title rounded-circle bg-soft-success"
+                        >
+                          <i
+                            class="mdi mdi-account-outline text-success font-size-20"
+                          ></i>
+                        </span>
+                      </div>
+                      <h5 class="font-size-22">136</h5>
+                      <p class="text-muted">80% Target</p>
+                      <div class="progress mt-3" style="height: 4px">
+                        <div
+                          class="progress-bar progress-bar bg-success"
+                          role="progressbar"
+                          style="width: 80%"
+                          aria-valuenow="80"
+                          aria-valuemin="0"
+                          aria-valuemax="80"
+                        ></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-body">
+                <h4 class="header-title mb-4">Total Impounded motocycles</h4>
+                <div class="media">
+                  <h4>14,235</h4>
+                  <div class="media-body ps-3">
+                    <div class="dropdown">
+                      <button
+                        class="btn btn-light btn-sm dropdown-toggle"
+                        type="button"
+                        id="dropdownMenuButton"
+                        data-bs-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                      >
+                        Today<i class="mdi mdi-chevron-down ms-1"></i>
+                      </button>
+                      <div
+                        class="dropdown-menu"
+                        aria-labelledby="dropdownMenuButton"
+                      >
+                        <a class="dropdown-item" href="#">Yesterday</a>
+                        <a class="dropdown-item" href="#">Last Week</a>
+                        <a class="dropdown-item" href="#">Last Month</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="mt-3">
+                  <div id="stastics-chart"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p></p>
+        <!----=============================  ecomm ====================================
 
                 <div class="row">
                     <div class="col-xl-4">
@@ -259,130 +311,111 @@
 
 
                 </div>
-            ##----------------------------------------------------- -->
-            <img src="{% static 'images/crime_type_chart.png' %}" alt="Crime Type Chart">
+            -->
+        <img
+          src="{% static 'images/crime_type_chart.png' %}"
+          alt="Crime Type Chart"
+        />
 
-                <div class="row">
+        <div class="row">
+          <div class="col-xl-8">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="header-title mb-4">List of impounded Bodas</h4>
+                <div class="table-responsive">
+                  <table class="table table-centered table-nowrap mb-0">
+                    <thead class="thead-light">
+                      <tr>
+                        <th>ID</th>
+                        <th>Number Plate</th>
 
-                    <div class="col-xl-8">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="header-title mb-4">List of impounded Bodas</h4>
-                                <div class="table-responsive">
-                                    <table class="table table-centered table-nowrap mb-0">
-                                        <thead class="thead-light">
-                                            <tr>
-                                                <th>ID</th>
-                                                <th>Number Plate</th>
-
-                                                <th>Name </th>
-                                                <th>Police Station</th>
-                                                <th>Date</th>
-                                                <th>Status</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>#2356</td>
-                                                <td>UBL 345T </td>
-                                                <td>Kenneth Gittens</td>
-                                                <td>Kabalagala</td>
-                                                <td>42</td>
-                                                <td><span
-                                                        class="badge badge-pill badge-soft-primary font-size-13">Pending</span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>#2564</td>
-                                                <td>UBL 345T</td>
-                                                <td>Alfred Gordon</td>
-                                                <td>Kampala RD</td>
-                                                <td>54</td>
-                                                <td><span
-                                                        class="badge badge-pill badge-soft-success font-size-13">Active</span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>#2125</td>
-                                                <td>UBL 345T</td>
-                                                <td>Keena Reyes</td>
-                                                <td>Jinja Rd</td>
-                                                <td>65</td>
-                                                <td><span
-                                                        class="badge badge-pill badge-soft-success font-size-13">Active</span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>#8587</td>
-                                                <td>UBL 345T</td>
-                                                <td>Timothy Zuniga</td>
-                                                <td>Kiira Rd</td>
-                                                <td>52</td>
-                                                <td><span
-                                                        class="badge badge-pill badge-soft-primary font-size-13">Pending</span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>#2354</td>
-                                                <td>UBL 345T</td>
-                                                <td>Joann Wiliams</td>
-                                                <td>Kiira Rd</td>
-                                                <td></td>
-                                                <td><span
-                                                        class="badge badge-pill badge-soft-primary font-size-13">Pending</span>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <!-- end table-responsive -->
-                            </div>
-
-
-
-                        </div>
-                        
-                    </div>
-
-
-                    <div class="col-xl-4">
-                        <div class="card" id="calendar">
-                            <div class="card-body">
-                                <h4 class="header-title mb-4">Calendar</h4>
-                                <div id="calendar"></div>
-                                <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
-                                <script>
-                                    (function($) {
-                                        $(document).ready(function() {
-                                            var calendarEl = document.getElementById('calendar');
-                                            var calendar = new FullCalendar.Calendar(calendarEl, {
-                                                initialView: 'dayGridMonth'
-                                            });
-                                            calendar.render();
-                                        });
-                                    })(jQuery);
-                                    
-                                </script>
-                            </div>
-                        </div>
-                    </div>
-                    
-
-
-
-
+                        <th>Name</th>
+                        <th>Police Station</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>#2356</td>
+                        <td>UBL 345T</td>
+                        <td>Kenneth Gittens</td>
+                        <td>Kabalagala</td>
+                        <td>42</td>
+                        <td>
+                          <span
+                            class="badge badge-pill badge-soft-primary font-size-13"
+                            >Pending</span
+                          >
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>#2564</td>
+                        <td>UBL 345T</td>
+                        <td>Alfred Gordon</td>
+                        <td>Kampala RD</td>
+                        <td>54</td>
+                        <td>
+                          <span
+                            class="badge badge-pill badge-soft-success font-size-13"
+                            >Active</span
+                          >
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>#2125</td>
+                        <td>UBL 345T</td>
+                        <td>Keena Reyes</td>
+                        <td>Jinja Rd</td>
+                        <td>65</td>
+                        <td>
+                          <span
+                            class="badge badge-pill badge-soft-success font-size-13"
+                            >Active</span
+                          >
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>#8587</td>
+                        <td>UBL 345T</td>
+                        <td>Timothy Zuniga</td>
+                        <td>Kiira Rd</td>
+                        <td>52</td>
+                        <td>
+                          <span
+                            class="badge badge-pill badge-soft-primary font-size-13"
+                            >Pending</span
+                          >
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>#2354</td>
+                        <td>UBL 345T</td>
+                        <td>Joann Wiliams</td>
+                        <td>Kiira Rd</td>
+                        <td></td>
+                        <td>
+                          <span
+                            class="badge badge-pill badge-soft-primary font-size-13"
+                            >Pending</span
+                          >
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
+                <!-- end table-responsive -->
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
- 
-        
-</script>
-    <!-- container-fluid -->
+  </div>
+  <!-- container-fluid -->
 </div>
 <!-- End Page-content -->
-{% endblock content %}
-{% block extra_javascript %}
+{% endblock content %} {% block extra_javascript %}
 <!-- apexcharts -->
 <script src="{% static 'libs/apexcharts/dist/apexcharts.min.js' %}"></script>
 <!-- Plugins js-->
@@ -390,8 +423,4 @@
 <script src="{% static 'libs/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js' %}"></script>
 
 <script src="{% static 'js/pages/dashboard.init.js' %}"></script>
-
-
-
-
 {% endblock extra_javascript %}
