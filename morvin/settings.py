@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-()(=*r-un(n3kppp*h-)o(z8c2j9)73sfm7v-=7o75f*sj$!i2
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app', 'localhost'] 
+ALLOWED_HOSTS = [] 
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 # Application definition
@@ -46,8 +46,6 @@ INSTALLED_APPS = [
 
     'bootstrap_pagination',
     "django_pagination_bootstrap",
-
-
 
     'extras',
     'crispy_forms',
@@ -97,12 +95,15 @@ WSGI_APPLICATION = 'morvin.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'cit',  
-        'USER': 'admin',
-        'PASSWORD': 'password',
-        'HOST': 'localhost',
-        'PORT': '3306',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+
+    
+         'NAME': 'cit',  
+         'USER': 'admin',
+         'PASSWORD': 'password',
+         'HOST': 'localhost',
+         'PORT': '3306',
         
     }
 }

@@ -23,12 +23,13 @@ from morvin import views
 from django.views.generic import TemplateView
 from .views import MyPasswordSetView ,MyPasswordChangeView
 from django.contrib.auth.decorators import login_required
+from . import views
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     # Index
-    path('', views.index,name='index'),
+    #path('', views.index,name='index'),
     #path('', views.index,name='index'),
 
     # Calendar
@@ -65,6 +66,11 @@ urlpatterns = [
     
     #profilepage view
     path('profile/', views.profile,name='profile'),
+    path('', views.index,name='index'),
+
+
+    #include extras
+    path('extras', include("extras.urls")),
 
 
 

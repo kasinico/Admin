@@ -19,6 +19,8 @@ from django.core.mail import send_mail
 from django.core.paginator import Paginator
 
 
+
+
 # class Index(LoginRequiredMixin,TemplateView):
 # template_name = "index.html"
 
@@ -28,7 +30,7 @@ def index(request):
     context = {}
 
     # Count the number of CrimeModel objects
-    context['count'] = CrimeModel.objects.count()
+    # context['count'] = CrimeModel.objects.count()
 
     return render(request, 'index.html', context=context)
 
