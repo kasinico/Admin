@@ -5,25 +5,24 @@
 {% extends 'partials/base.html' %}
 {% load static %}
 
-{% block title %}Dashboard{% endblock title %}
-
-
-{% block extra_css %}
-<!-- plugin css -->
-<link href="{% static 'libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css' %}" rel="stylesheet"
-    type="text/css" />
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.0/fullcalendar.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.0/fullcalendar.print.css" media="print" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.0/fullcalendar.min.js"></script>
-
-    <script src="{% static 'js/calendar.js' %}"></script>
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="{% static 'js/fullcalendar/main.min.js' %}"></script>
-
-{% endblock extra_css %}
+{% comment %} {% block title %}Dashboard{% endblock title %} {% endcomment %}
+{% comment %}  {% endcomment %}
+{% comment %}  {% endcomment %}
+{% comment %} <!-- plugin css --> {% endcomment %}
+{% comment %} <link href="{% static 'libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css' %}" rel="stylesheet" {% endcomment %}
+    {% comment %} type="text/css" /> {% endcomment %}
+{% comment %}  {% endcomment %}
+    {% comment %} <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.0/fullcalendar.min.css" /> {% endcomment %}
+    {% comment %} <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.0/fullcalendar.print.css" media="print" /> {% endcomment %}
+    {% comment %} <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script> {% endcomment %}
+    {% comment %} <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.0/fullcalendar.min.js"></script> {% endcomment %}
+{% comment %}  {% endcomment %}
+    {% comment %} <script src="{% static 'js/calendar.js' %}"></script> {% endcomment %}
+{% comment %}  {% endcomment %}
+    {% comment %} <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> {% endcomment %}
+{% comment %} <script src="{% static 'js/fullcalendar/main.min.js' %}"></script> {% endcomment %}
+{% comment %}  {% endcomment %}
+{% comment %} {% endblock extra_css %} {% endcomment %}
 
 
 {% block content %}
@@ -37,6 +36,11 @@
   
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="/static/css/adminlte.min.css" rel="stylesheet" type="text/css" />
+  <link href="/static/css/adminlte.css" rel="stylesheet" type="text/css" />
+
+
+  
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
@@ -71,7 +75,7 @@
                        alt="User profile picture">
                 </div>
 
-                <div class="user-info">
+                <div class="profile-username text-center">
                     <h5 class="mt-3 font-size-16 text-white">{{ user.username }}</h5>
                      <!-- <span class="font-size-13 text-white-50">Sample Rank</span> -->
                   </div>                
@@ -175,7 +179,8 @@
                     <!-- Post -->
                     <div class="post clearfix">
                       <div class="user-block">
-                        <img class="img-circle img-bordered-sm" src="../../dist/img/user7-128x128.jpg" alt="User Image">
+                        {% comment %} <img class="img-circle img-bordered-sm" src="/static/images/user/avatar-1.jpg" alt="User Image"> {% endcomment %}
+                        <img class="profile-user-img img-fluid img-circle" src="/static/images/user/avatar-1.jpg" alt="User profile picture">
                         <span class="username">
                           <a href="#">Sarah Ross</a>
                           <a href="#" class="float-right btn-tool"><i class="fas fa-times"></i></a>
@@ -441,13 +446,7 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-  <footer class="main-footer">
-    <div class="float-right d-none d-sm-block">
-      <b>Version</b> 1.0.0
-    </div>
-    <strong>Copyright &copy; 2020-2021 <a href="">A</a>.</strong> All rights
-    reserved.
-  </footer>
+ 
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
