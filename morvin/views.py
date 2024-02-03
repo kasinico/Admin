@@ -28,19 +28,44 @@ from django.core.paginator import Paginator
 # index page Dashboard with counter
 from django.shortcuts import redirect
 
+# def index(request):
+#         context = {}
+#         context['user_authenticated'] = request.user.is_authenticated
+
+
+#     # Count the number of CrimeModel objects
+#     # context['count'] = CrimeModel.objects.count()
+
+#         return render(request, 'index.html', context=context)
+
+from django.shortcuts import render
+
 def index(request):
-    context = {}
-
-    # Count the number of CrimeModel objects
-    # context['count'] = CrimeModel.objects.count()
-
+    context = {
+        'user_authenticated': request.user.is_authenticated
+    }
     return render(request, 'index.html', context=context)
+
 
 #profile page
 def profile(request):
-    context = {}
+    if request.user.is_authenticated:
+          
+        context = {
+            'user': request.user
+        }
 
-    return render(request, 'profile.html', context=context)
+        return render(request, 'profile.html', context=context)
+    else:
+        #return redirect('index')
+    # User is not authenticated, raise a 404 exception
+        # raise Http404("You don't have permission to access this page.")
+        return render(request, 'pages-404.html', status=404)
+
+
+#custom 404 view to handle the 404 exception
+# def custom_404(request, exception):
+#     return render(request, 'pages-404.html', status=404)
 
 
 class Calendar(LoginRequiredMixin, TemplateView):

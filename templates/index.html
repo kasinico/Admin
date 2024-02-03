@@ -1,14 +1,23 @@
-{% extends 'partials/base.html' %} {% load static %} {% block title
-%}Dashboard{% endblock title %} {% block extra_css %}
-<!-- plugin css -->
-<link
-  href="{% static 'libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css' %}"
-  rel="stylesheet"
-  type="text/css"
-/>
+{% extends 'partials/base.html' %}
+{% load static %}
 
+{% block extra_css %}
+<!-- plugin css -->
+<link href="{% static 'libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css' %}" rel="stylesheet" type="text/css" />
 <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" />
-{% endblock extra_css %} {% block content %}
+{% endblock extra_css %}
+
+{% block content %}
+    
+{% if request.user.is_authenticated %}
+        <!-- Show the "Add Crime" button for authenticated users -->
+  <a href="{% url 'addcrime' %}">Add Crime</a>
+{% endif %}
+  
+    <!-- Other content of your index page -->
+    
+{% comment %} {% endblock %} {% endcomment %}
+
 <div class="main-content">
   <div class="page-content">
     <!-- ======= Header ======= -->
