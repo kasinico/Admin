@@ -19,10 +19,7 @@
 
 {% block content %}
     
-{% if request.user.is_authenticated %}
-        <!-- Show the "Add Crime" button for authenticated users -->
-  <a href="{% url 'addcrime' %}">Add Crime</a>
-{% endif %}
+
   
     <!-- Other content of your index page -->
     
@@ -88,7 +85,10 @@
         <div class="row align-items-center">
           <div class="col-sm-6">
             <div class="page-title">
+             {% if request.user.is_authenticated %}
               <h4>Dashboard</h4>
+              {% endif %}
+              <!----- comment breadcrumb ====================================================
               <ol class="breadcrumb m-0">
                 <li class="breadcrumb-item">
                   <a href="javascript: void(0);">BODAAPP</a>
@@ -97,14 +97,23 @@
                   <a href="javascript: void(0);">Dashboard</a>
                 </li>
                 <li class="breadcrumb-item active">Dashboard</li>
-              </ol>
+              </ol> -->
             </div>
           </div>
           <div class="col-sm-6">
             <div class="float-end d-none d-sm-block">
-              <a href="{% url 'addcrime' %}" class="btn btn-success"
-                >Add New Crime</a
-              >
+
+                                        {% if request.user.is_authenticated %}
+                                    <!-- Show the "Add Crime" button for authenticated users -->
+                              <a href="{% url 'addcrime' %}" class="btn btn-success"
+                >Add New Crime</a>
+                              <div class="alert alert-success text-center mb-4 mt-4 pt-2" role="alert">
+                                                                    LoggedIn successfully!
+                                                                </div>
+                            {% endif %}
+              {% comment %} <a href="{% url 'addcrime' %}" class="btn btn-success" {% endcomment %}
+                {% comment %} >Add New Crime</a {% endcomment %}
+              {% comment %} > {% endcomment %}
             </div>
           </div>
         </div>
