@@ -4689,6 +4689,7 @@ input[type="button"].btn-block {
   background-color: transparent;
   border: 1px solid transparent;
   border-radius: 0.25rem;
+  display: none;
 }
 
 .navbar-toggler:hover, .navbar-toggler:focus {
@@ -35817,6 +35818,8 @@ body.iframe-mode-fullscreen {
 .content-wrapper.iframe-mode iframe .content-wrapper {
   padding-bottom: 0 !important;
 }
+.fullscreen-enable [data-toggle="fullscreen"] .mdi-fullscreen::before {
+  content: '\F0294'; }
 
 body.iframe-mode-fullscreen .content-wrapper.iframe-mode {
   position: absolute;

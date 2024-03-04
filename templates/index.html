@@ -1,11 +1,21 @@
 {% extends 'partials/base.html' %}
 {% load static %}
 
-{% block extra_css %}
+{% comment %} {% block extra_css %} {% endcomment %}
+<head>
 <!-- plugin css -->
 <link href="{% static 'libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css' %}" rel="stylesheet" type="text/css" />
 <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" />
-{% endblock extra_css %}
+<link rel="stylesheet" href="{% static 'css/adminlte.css' %}" />
+
+<link href="/static/css/adminlte.min.css" rel="stylesheet" type="text/css" />
+    <link href="/static/css/adminlte.min.css.map" rel="stylesheet" type="text/css" />
+  <link href="/static/css/adminlte.css" rel="stylesheet" type="text/css" />
+  <link href="/static/css/adminlte.css.map" rel="stylesheet" type="text/css" />
+
+
+</head>
+{% comment %} {% endblock extra_css %} {% endcomment %}
 
 {% block content %}
     
@@ -21,16 +31,15 @@
 <div class="main-content">
   <div class="page-content">
     <!-- ======= Header ======= -->
-    <header id="header" class="fixed-top">
+    <header id="header" class="dropdown-">
       <div
-        class="container d-flex align-items-center justify-content-lg-between"
-      >
-        <h1 class="logo me-auto me-lg-0">
-          <a href="#">Logo<span>.</span></a>
-        </h1>
+        class="container d-flex align-items-center justify-content-lg-between">
+        {% comment %} <h1 class="logo me-auto me-lg-0"> {% endcomment %}
+          {% comment %} <a href="#">Logo<span>.</span></a> {% endcomment %}
+        {% comment %} </h1> {% endcomment %}
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html" class="logo me-auto me-lg-0"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-
+ <!-- comment ===================================================================
         <nav id="navbar" class="navbar order-last order-lg-0">
           <ul>
             <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
@@ -66,10 +75,10 @@
           </ul>
           <i class="bi bi-list mobile-nav-toggle"></i>
         </nav>
-        <!-- .navbar -->
+        .navbar -->
 
-        <a href="#about" class="get-started-btn scrollto">Get Started</a>
-      </div>
+        {% comment %} <a href="#about" class="get-started-btn scrollto">Get Started</a> {% endcomment %}
+      {% comment %} </div> {% endcomment %}
     </header>
     <!-- End Header -->
 

@@ -28,9 +28,9 @@
 <body class="authentication-bg bg-primary">
 
 
-
-  <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top ">
+{% comment %}  {% endcomment %}
+  {% comment %} <!-- ======= Header ======= --> {% endcomment %}
+  <header id="header" class="">
     <div class="container d-flex align-items-center justify-content-lg-between">
 
       <h1 class="logo me-auto me-lg-0"><a href="index.html">Gp<span>.</span></a></h1>
@@ -69,7 +69,7 @@
       <a href="#about" class="get-started-btn scrollto">Get Started</a>
 
     </div>
-  </header><!-- End Header -->
+  {% comment %} </header><!-- End Header --> {% endcomment %}
 
 
 
@@ -88,7 +88,7 @@
                                             <img src="{% static 'images/19.jpg' %}" height="50" alt="logo">
                                         </a>
                                         <h5 class="text-primary mb-2 mt-4">Welcome Back !</h5>
-                                        <p class="text-muted">Sign in to continue Using Boda Tracking Info App.</p>
+                                        <p class="text-muted">Sign in to continue Using App.</p>
                                     </div>
                                     <form class="form-horizontal mt-4 pt-2" method="POST" action="{% url 'account_login'  %}">
                                         {% csrf_token %}                                      
