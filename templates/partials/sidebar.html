@@ -24,7 +24,7 @@
         <!--tart profile page link, dripicons-calendar-->
         <a href="{% url 'profile' %}" class="waves-effect">
           <i class="user-info"></i>
-          <span key="profile-user">Profile</span>
+          {% comment %} <span key="profile-user">Profile</span> {% endcomment %}
         </a>
       </div>
     </div>
@@ -48,8 +48,10 @@
         </li>
         <li>
           <a href="{% url 'list_view' %}" class="waves-effect">
-            <i class="dripicons-calendar"></i>
-            <span key="t-calendar">View Crime</span>
+            <i class="dripicons-contract"></i>
+            <span class="badge rounded-pill bg-info float-end">{{ count }}</span>
+            
+            <span key="t-application">View Crime</span>
           </a>
         </li>
         <li>

@@ -28,7 +28,7 @@
 <div class="main-content">
   <div class="page-content">
     <!-- ======= Header ======= -->
-    <header id="header" class="dropdown-">
+    <header id="header" class="">
       <div
         class="container d-flex align-items-center justify-content-lg-between">
         {% comment %} <h1 class="logo me-auto me-lg-0"> {% endcomment %}
@@ -446,8 +446,8 @@
 <!-- apexcharts -->
 <script src="{% static 'libs/apexcharts/dist/apexcharts.min.js' %}"></script>
 <!-- Plugins js-->
-<script src="{% static 'libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js' %}"></script>
-<script src="{% static 'libs/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js' %}"></script>
+{% comment %} <script src="{% static 'libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js' %}"></script> {% endcomment %}
+{% comment %} <script src="{% static 'libs/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js' %}"></script> {% endcomment %}
 
 <script src="{% static 'js/pages/dashboard.init.js' %}"></script>
 {% endblock extra_javascript %}

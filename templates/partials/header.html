@@ -30,6 +30,7 @@
                     <button type="button" class="btn btn-sm px-3 font-size-24 header-item waves-effect" id="vertical-menu-btn">
                         <i class="mdi mdi-menu"></i>
                     </button>
+                    
                     <div class="topbar-social-icon me-3 d-none d-md-block">
                         <ul class="list-inline title-tooltip m-0">
                             <li class="list-inline-item">
@@ -161,9 +162,16 @@
                             <span class="d-none d-xl-inline-block ms-1">{% if user.is_authenticated %}{{ user.username }}{% else %}James{% endif %}</span>
                             <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                         </button>
+
+
                         <div class="dropdown-menu dropdown-menu-end">
+                            {% if request.user.is_authenticated %}
+
                             <!-- item-->
                             <a class="dropdown-item" href="{% url 'lockscreen' %}" key="t-lock-screen"><i class="mdi mdi-lock-open-outline font-size-16 align-middle me-1"></i> Lock screen</a>
+                            <a class="dropdown-item" href="{% url 'profile' %}" key="t-Profile"><i class="mdi mdi-face-outline font-size-16 align-middle me-1"></i> Profile</a>
+
+                                {% endif %} 
                             <div class="dropdown-divider"></div>
                             {% if user.is_authenticated %}
                             
@@ -178,6 +186,7 @@
                             <a class="dropdown-item text-success" href="{% url 'account_login' %}"><i class="mdi mdi-login font-size-16 align-middle me-1 text-success"></i> Login</a>
                             {% endif %}
                         </div>
+                       
                     </div>
                     <div class="dropdown d-inline-block">
                         <button type="button" class="btn header-item noti-icon right-bar-toggle waves-effect">

@@ -28,15 +28,15 @@ from django.core.paginator import Paginator
 # index page Dashboard with counter
 from django.shortcuts import redirect
 
-# def index(request):
+# def view_counts(request):
 #         context = {}
 #         context['user_authenticated'] = request.user.is_authenticated
 
 
-#     # Count the number of CrimeModel objects
+#     # Count the number of CrimeModel objects of list_view
 #     # context['count'] = CrimeModel.objects.count()
 
-#         return render(request, 'index.html', context=context)
+#         return render(request, 'sidebar.html', context=context)
 
 from django.shortcuts import render
 
@@ -44,7 +44,9 @@ def index(request):
     context = {
         'user_authenticated': request.user.is_authenticated
     }
-    return render(request, 'index.html', context=context)
+    # Count the number of CrimeModel objects of list_view
+    context['count'] = CrimeModel.objects.count()
+    return render(request, 'index.html',  context=context)
 
 
 #profile page
@@ -115,7 +117,7 @@ def addcrime(request):
             return redirect('/list_view')
     else:
         form = CrimeForm(instance=my_model_instance)
-    return render(request, 'addcrime.html', {'form': form})
+    return render(request, 'LoginPage.vue', {'form': form})
 
 
 # list/show crime view
@@ -129,6 +131,8 @@ def list_view(request):
     objects = paginator.get_page(page)
     context = {}
     context["dataset"] = objects
+        # Count the number of CrimeModel objects of list_view
+    context['count'] = CrimeModel.objects.count()
     
     return render(request, "list_view.html", context)
 
